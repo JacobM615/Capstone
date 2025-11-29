@@ -10,25 +10,23 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger(__name__, "extract.log", level=logging.DEBUG)
 
-file_name = "subscription_plans.csv"
 
-file_path = os.path.join(
-    os.path.dirname(__file__),
-    "..",
-    "..",
-    "data",
-    "raw",
-    file_name,
-)
-
-
-def extract_sub_plans() -> pd.DataFrame:
+def extract_csv(file_name: str) -> pd.DataFrame:
     try:
-        sub_plans = pd.read_csv(file_path)
-        logger.info(
-            f"Successful data extraction: {file_name} (Shape: {sub_plans.shape})"
+        file_path = os.path.join(
+            os.path.dirname(__file__),
+            "..",
+            "..",
+            "data",
+            "raw",
+            file_name,
         )
-        return sub_plans
+
+        df = pd.read_csv(file_path)
+        logger.info(
+            f"Successful data extraction: {file_name} (Shape: {df.shape})"
+        )
+        return df
 
     except Exception as e:
         logger.error(f"Data extraction error for {file_path}: {str(e)}")

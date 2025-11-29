@@ -1,13 +1,17 @@
 import pandas as pd
 
-from src.extract.extract_checkin_checkout import extract_checkin_checkout
-from src.extract.extract_gym_loc import extract_gym_loc
-from src.extract.extract_sub_plans import extract_sub_plans
-from src.extract.extract_users import extract_users
+from src.extract.extract_csv import extract_csv
 
-from src.utils.logging_utils import setup_logger
+# from src.utils.logging_utils import setup_logger
 
 # Logger setup
+
+csv_files = [
+    "checkin_checkout_history.csv",
+    "gym_locations_data.csv",
+    "subscription_plans.csv",
+    "users_data.csv",
+]
 
 
 def extract_data() -> (
@@ -16,10 +20,10 @@ def extract_data() -> (
     try:
         # Logger info exacting started
 
-        checkin_checkout = extract_checkin_checkout()
-        gym_loc = extract_gym_loc()
-        sub_plans = extract_sub_plans()
-        users = extract_users()
+        checkin_checkout = extract_csv(csv_files[0])
+        gym_loc = extract_csv(csv_files[1])
+        sub_plans = extract_csv(csv_files[2])
+        users = extract_csv(csv_files[3])
         # ^^Getting all the dfs
 
         # Logger info successful??, df shapes??
