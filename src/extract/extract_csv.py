@@ -29,5 +29,5 @@ def extract_csv(file_name: str) -> pd.DataFrame:
         return df
 
     except Exception as e:
-        logger.error(f"Data extraction error for {file_path}: {str(e)}")
-        raise Exception(f"Data extraction error for {file_path}")
+        logger.error(f"Extraction error for {file_path}: {str(e)}")
+        raise Exception(f"Error for csv {file_path} extraction")
