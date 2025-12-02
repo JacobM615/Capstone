@@ -2,6 +2,8 @@ import pandas as pd
 import os
 import logging
 
+from src.utils.file_utils import find_root
+
 # import timeit
 
 from src.utils.logging_utils import setup_logger
@@ -14,9 +16,7 @@ logger = setup_logger(__name__, "extract.log", level=logging.DEBUG)
 def extract_csv(file_name: str) -> pd.DataFrame:
     try:
         file_path = os.path.join(
-            os.path.dirname(__file__),
-            "..",
-            "..",
+            find_root(),
             "data",
             "raw",
             file_name,
