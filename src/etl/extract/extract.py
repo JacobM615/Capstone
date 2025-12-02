@@ -1,7 +1,7 @@
 import pandas as pd
 
-from src.extract.extract_csv import extract_csv
-from src.utils.logging_utils import setup_logger
+from src.etl.extract.extract_csv import extract_csv
+from src.etl.utils.logging_utils import setup_logger
 
 logger = setup_logger("extract", "extract.log")
 

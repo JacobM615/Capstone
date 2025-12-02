@@ -1,13 +1,13 @@
 import pandas as pd
 
-from src.transform.clean_checkin_checkout import clean_checkin_checkout
+from src.etl.transform.clean_checkin_checkout import clean_checkin_checkout
 
 # from src.transform.clean_gym_loc import clean_gym_loc
 # from src.transform.clean_sub_plans import clean_sub_plans
 # from src.transform.clean_userss import clean_users
 # from src.transform.merge_stuff import merge_stuff
 
-from src.utils.logging_utils import setup_logger
+from src.etl.utils.logging_utils import setup_logger
 
 logger = setup_logger("transform_data", "transform_data.log")
 

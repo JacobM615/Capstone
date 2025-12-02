@@ -2,11 +2,11 @@ import pandas as pd
 import os
 import logging
 
-from src.utils.file_utils import find_root
+from src.etl.utils.file_utils import find_root
 
 # import timeit
 
-from src.utils.logging_utils import setup_logger
+from src.etl.utils.logging_utils import setup_logger
 
 # Timer variables
 

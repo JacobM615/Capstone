@@ -1,6 +1,6 @@
 import pandas as pd
 
-from src.utils.file_utils import save_dataframe_to_csv
+from src.etl.utils.file_utils import save_dataframe_to_csv
 
 
 def clean_checkin_checkout(

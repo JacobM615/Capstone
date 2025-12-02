@@ -1,7 +1,7 @@
 import pandas as pd
 
-from src.utils.logging_utils import setup_logger
-from src.utils.file_utils import save_dataframe_to_csv
+from src.etl.utils.logging_utils import setup_logger
+from src.etl.utils.file_utils import save_dataframe_to_csv
 
 logger = setup_logger("load_data", "load_data.log")
 
