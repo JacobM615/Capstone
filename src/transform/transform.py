@@ -11,7 +11,7 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger("transform_data", "transform_data.log")
 
-relative_output_dir = "data\proccessed"
+relative_output_dir = "data/processed"
 file_names = [
     "cleaned_checkin_checkout.csv",
     "cleaned_gyms.csv",
@@ -21,21 +21,27 @@ file_names = [
 
 
 def transform_data(
-    extracted_data,
+    extracted_data: tuple[
+        pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame
+    ],
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     try:
-        transformed_data = extracted_data
         logger.info("Data loading started!")
         logger.info("Checkin_checkout cleaning...")
-        cleaned_checkin_checkout = clean_checkin_checkout(
+        cleaned_checkin_checkout, file_location = clean_checkin_checkout(
             extracted_data[0], relative_output_dir, file_names[0]
         )
-        logger.info("Checkin_checkout cleaned")
+        logger.info(f"File saved to {file_location}")
+        logger.info("Checkin_checkout cleaned and saved")
 
         logger.info("Data loading completed!")
-        transformed_data[0] = cleaned_checkin_checkout
 
-        return transformed_data
+        return (
+            cleaned_checkin_checkout,
+            extracted_data[1],
+            extracted_data[2],
+            extracted_data[3],
+        )
     except Exception as e:
         logger.error(f"Data transforming error: {str(e)}")
         raise e

@@ -1,10 +1,16 @@
+import pandas as pd
+
 from src.utils.logging_utils import setup_logger
 from src.utils.file_utils import save_dataframe_to_csv
 
 logger = setup_logger("load_data", "load_data.log")
 
 
-def load_data(transformed_data) -> None:
+def load_data(
+    transformed_data: tuple[
+        pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame
+    ],
+) -> None:
     for df in transformed_data:
         if df is None or df.empty:
             logger.warning("transformed_data is empty -> no data to load")
@@ -13,7 +19,7 @@ def load_data(transformed_data) -> None:
     try:
         logger.info("Data loading started!")
 
-        relative_output_dir = "data\output"
+        relative_output_dir = "data/output"
         file_names = [
             "checkin_checkout.csv",
             "gyms.csv",
