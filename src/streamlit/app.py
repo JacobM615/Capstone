@@ -19,6 +19,7 @@ st.markdown(
 )
 
 home_page = st.Page("pages/page_home.py", title="Homepage")
+second_page = st.Page("pages/page_2.py", title="Page 2")
 
-navigation = st.navigation([home_page])
+navigation = st.navigation([home_page, second_page])
 navigation.run()
