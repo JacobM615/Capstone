@@ -87,21 +87,23 @@
 
 ## Some questions to answer...
 
-How long is the average gym sessions?
+How long is the average gym sessions? (checkout - checkin)
 
 What is the average calories burned?
 
-Most and least popular workout type?
+Most and least popular workout type? (count workout types)
 
-Most and least popular gym?
+Most and least popular gym? (count number of occurrences)
 
-What do the subscription type demographics look like?
+What do the subscription type demographics look like? (ages, gender by sub plan)
 
-What does the demographic of all the gyms look like?
+What does the demographic of all the gyms look like? (age, gender by gym by gym)
 
-Revenue by subscription type?
+Revenue by subscription type? (occurrences x price per plan)
 
-Number of users per subscription?
+Number of users per subscription? (occurrences per sub)
+
+Workout types per gym?
 
 Revenue per gym? (gonna need to modify the dataset for this)
 
@@ -213,7 +215,7 @@ User Story 3.1
 
 ```text
 As a Data Engineer/Analyst,
-I want to present the data and finding in Streamlit,
+I want to present the data and findings in Streamlit,
 So that it can be presented.
 ```
 

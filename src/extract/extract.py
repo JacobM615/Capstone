@@ -5,7 +5,7 @@ from src.utils.logging_utils import setup_logger
 
 logger = setup_logger("extract", "extract.log")
 
-csv_files = [
+CSV_FILES = [
     "checkin_checkout_history.csv",
     "gym_locations_data.csv",
     "subscription_plans.csv",
@@ -19,10 +19,10 @@ def extract_data() -> (
     try:
         logger.info("Data extraction started!")
 
-        checkin_checkout = extract_csv(csv_files[0])
-        gym_loc = extract_csv(csv_files[1])
-        sub_plans = extract_csv(csv_files[2])
-        users = extract_csv(csv_files[3])
+        checkin_checkout = extract_csv(CSV_FILES[0])
+        gym_loc = extract_csv(CSV_FILES[1])
+        sub_plans = extract_csv(CSV_FILES[2])
+        users = extract_csv(CSV_FILES[3])
         # ^^Getting all the dfs
 
         logger.info("Data extraction completed!")
@@ -30,5 +30,5 @@ def extract_data() -> (
         return (checkin_checkout, gym_loc, sub_plans, users)
 
     except Exception as e:
-        logger.error(f"Data extraction error in extract.py: {str(e)}")
-        raise Exception(f"Data extraction error in extract.py: {str(e)}")
+        logger.error(f"Data extraction error in extract.py: {e}")
+        raise Exception(f"Data extraction error in extract.py: {e}")
