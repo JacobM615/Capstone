@@ -1,6 +1,6 @@
 import pandas as pd
 
-from src.etl.transform.clean_checkin_checkout import clean_checkin_checkout
+from src.etl.transform.transform_checkin_checkout import clean_checkin_checkout
 
 # from src.transform.clean_gym_loc import clean_gym_loc
 # from src.transform.clean_sub_plans import clean_sub_plans
@@ -27,12 +27,12 @@ def transform_data(
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     try:
         logger.info("Data loading started!")
-        logger.info("Checkin_checkout cleaning...")
+        logger.info("Checkin_checkout cleaning and transforming...")
         cleaned_checkin_checkout, file_location = clean_checkin_checkout(
             extracted_data[0], relative_output_dir, file_names[0]
         )
         logger.info(f"File saved to {file_location}")
-        logger.info("Checkin_checkout cleaned and saved")
+        logger.info("Checkin_checkout cleaned, transformed and saved")
 
         logger.info("Data loading completed!")
 

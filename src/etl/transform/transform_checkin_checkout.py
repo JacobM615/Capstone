@@ -17,6 +17,8 @@ def clean_checkin_checkout(
 
     checkin_checkout.reset_index(drop=True, inplace=True)
 
+    checkin_checkout = make_duration(checkin_checkout)
+
     file_location = save_dataframe_to_csv(
         checkin_checkout, relative_output_dir, file_name
     )
@@ -44,4 +46,9 @@ def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
 
 def remove_whitespace(df: pd.DataFrame) -> pd.DataFrame:
     df["user_id"] = df["user_id"].str.strip()
+    return df
+
+
+def make_duration(df: pd.DataFrame) -> pd.DataFrame:
+    df["duration"] = df["checkout_time"] - df["checkin_time"]
     return df
