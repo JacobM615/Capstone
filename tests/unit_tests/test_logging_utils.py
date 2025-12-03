@@ -5,7 +5,7 @@ import pytest
 from pathlib import Path
 from unittest.mock import patch, MagicMock
 
-from src.utils.logging_utils import (
+from src.etl.utils.logging_utils import (
     _ensure_log_directory,
     _create_formatter,
     _create_handlers,
@@ -46,7 +46,7 @@ def test_create_handlers_returns_both_handlers():
         assert console_handler.level == logging.INFO
 
 
-@patch("src.utils.logging_utils.logging.getLogger")
+@patch("src.etl.utils.logging_utils.logging.getLogger")
 def test_setup_logger_creates_logger_with_handlers(mock_get_logger):
     mock_logger = MagicMock()
     mock_logger.handlers = []
@@ -59,7 +59,7 @@ def test_setup_logger_creates_logger_with_handlers(mock_get_logger):
         assert mock_logger.addHandler.call_count == 2
 
 
-@patch("src.utils.logging_utils.logging.getLogger")
+@patch("src.etl.utils.logging_utils.logging.getLogger")
 def test_setup_logger_skips_handlers_if_already_exist(mock_get_logger):
     mock_logger = MagicMock()
     mock_logger.handlers = [MagicMock()]  # Already has handlers

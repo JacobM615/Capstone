@@ -2,12 +2,12 @@ import pandas as pd
 import pytest
 
 from unittest.mock import patch
-from src.extract.extract_csv import extract_csv
+from src.etl.extract.extract_csv import extract_csv
 
 
 @pytest.fixture
 def mock_logger(mocker):
-    return mocker.patch("src.extract.extract_csv.logger")
+    return mocker.patch("src.etl.extract.extract_csv.logger")
 
 
 mock_file_name = "mock.csv"
@@ -22,7 +22,9 @@ def test_extract_csv_to_df(mocker):
         }
     )
 
-    mocker.patch("src.extract.extract_csv.pd.read_csv", return_value=mock_df)
+    mocker.patch(
+        "src.etl.extract.extract_csv.pd.read_csv", return_value=mock_df
+    )
 
     function_df = extract_csv(mock_file_name)
 
@@ -30,13 +32,15 @@ def test_extract_csv_to_df(mocker):
     pd.testing.assert_frame_equal(function_df, mock_df)
 
 
-@patch("src.extract.extract_csv.os.path.join", return_value="mock_file_path")
+@patch(
+    "src.etl.extract.extract_csv.os.path.join", return_value="mock_file_path"
+)
 def test_extract_csv_errors_logged(mocker, mock_logger):
 
     file_path = "mock_file_path"
 
     mocker.patch(
-        "src.extract.extract_csv.pd.read_csv",
+        "src.etl.extract.extract_csv.pd.read_csv",
         side_effect=Exception(f"Error for csv, {file_path} extraction"),
     )
 

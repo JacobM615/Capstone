@@ -8,7 +8,7 @@ logger = setup_logger("load_data", "load_data.log")
 
 def load_data(
     transformed_data: tuple[
-        pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame
+        pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame
     ],
 ) -> None:
     for df in transformed_data:
@@ -19,8 +19,8 @@ def load_data(
     try:
         logger.info("Data loading started!")
 
-        relative_output_dir = "data/output"
-        file_names = [
+        relative_output_dir_single = "data/output/single_tables"
+        file_names_single = [
             "checkin_checkout.csv",
             "gyms.csv",
             "subscriptions.csv",
@@ -28,9 +28,26 @@ def load_data(
         ]
 
         i = 0
-        while i < len(transformed_data):
+        while i < len(file_names_single):
             file_location = save_dataframe_to_csv(
-                transformed_data[i], relative_output_dir, file_names[i]
+                transformed_data[i],
+                relative_output_dir_single,
+                file_names_single[i],
+            )
+            logger.info(f"File saved to {file_location}")
+            i += 1
+
+        relative_output_dir_merged = "data/output/merged"
+        file_names_merged = [
+            "users__sub_plans.csv",
+        ]
+
+        i = len(file_names_single)
+        while i < (len(file_names_merged) + len(file_names_single)):
+            file_location = save_dataframe_to_csv(
+                transformed_data[i],
+                relative_output_dir_merged,
+                file_names_merged[i - len(file_names_single)],
             )
             logger.info(f"File saved to {file_location}")
             i += 1

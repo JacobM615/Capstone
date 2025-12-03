@@ -2,7 +2,7 @@ import pandas as pd
 import pytest
 
 from unittest.mock import patch
-from src.extract.extract import extract_data
+from src.etl.extract.extract import extract_data
 
 
 def normalise_nulls(df):
@@ -44,7 +44,7 @@ def test_extract_data_returns_correct_data(expected_df):
     )
 
 
-@patch("src.extract.extract.extract_csv")
+@patch("src.etl.extract.extract.extract_csv")
 def test_extract_data_propagates_extract_csv_exceptions(mock_extract_csv):
     mock_extract_csv.side_effect = Exception("File Error")
 
