@@ -2,7 +2,7 @@ import streamlit as st
 
 st.set_page_config(
     page_title="Gym data capstone",
-    layout="wide",
+    # layout="wide",
     initial_sidebar_state="expanded",
 )
 
@@ -19,7 +19,12 @@ st.markdown(
 )
 
 home_page = st.Page("pages/page_home.py", title="Homepage")
-second_page = st.Page("pages/page_2.py", title="Page 2")
+checkin_checkout = st.Page(
+    "pages/checkin_checkout.py", title="Checkin-checkout history"
+)
+subscriptions = st.Page("pages/subscriptions.py", title="Subscriptions")
 
-navigation = st.navigation([home_page, second_page])
+navigation = st.navigation(
+    [home_page, checkin_checkout, subscriptions], expanded=True
+)
 navigation.run()
