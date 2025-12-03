@@ -4,10 +4,10 @@ import sys
 
 # from config.env_config import setup_env
 
-from src.utils.logging_utils import setup_logger
-from src.extract.extract import extract_data
-from src.transform.transform import transform_data
-from src.load.load import load_data
+from src.etl.utils.logging_utils import setup_logger
+from src.etl.extract.extract import extract_data
+from src.etl.transform.transform import transform_data
+from src.etl.load.load import load_data
 
 
 def main():
