@@ -1,6 +1,7 @@
 import pandas as pd
 
 from src.etl.utils.file_utils import save_dataframe_to_csv
+from src.etl.utils.cleaning_utils import remove_nulls, remove_duplicates
 
 
 def clean_checkin_checkout(
@@ -26,10 +27,6 @@ def clean_checkin_checkout(
     return checkin_checkout, file_location
 
 
-def remove_nulls(df: pd.DataFrame) -> pd.DataFrame:
-    return df.dropna()
-
-
 def correct_dtypes(df: pd.DataFrame) -> pd.DataFrame:
     return df.astype(
         {
@@ -38,10 +35,6 @@ def correct_dtypes(df: pd.DataFrame) -> pd.DataFrame:
             "calories_burned": int,
         }
     )
-
-
-def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
-    return df.drop_duplicates()
 
 
 def remove_whitespace(df: pd.DataFrame) -> pd.DataFrame:

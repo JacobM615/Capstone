@@ -4,7 +4,8 @@ from src.etl.transform.transform_checkin_checkout import clean_checkin_checkout
 
 # from src.transform.clean_gym_loc import clean_gym_loc
 # from src.transform.clean_sub_plans import clean_sub_plans
-# from src.transform.clean_userss import clean_users
+from src.etl.transform.clean_users import clean_users
+
 # from src.transform.merge_stuff import merge_stuff
 
 from src.etl.utils.logging_utils import setup_logger
@@ -34,13 +35,20 @@ def transform_data(
         logger.info(f"File saved to {file_location}")
         logger.info("Checkin_checkout cleaned, transformed and saved")
 
+        logger.info("Users cleaning and transforming...")
+        cleaned_users, file_location = clean_users(
+            extracted_data[3], relative_output_dir, file_names[3]
+        )
+        logger.info(f"File saved to {file_location}")
+        logger.info("Users cleaned, transformed and saved")
+
         logger.info("Data loading completed!")
 
         return (
             cleaned_checkin_checkout,
             extracted_data[1],
             extracted_data[2],
-            extracted_data[3],
+            cleaned_users,
         )
     except Exception as e:
         logger.error(f"Data transforming error: {str(e)}")
