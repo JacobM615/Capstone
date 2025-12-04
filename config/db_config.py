@@ -1,6 +1,6 @@
 import os
 import logging
-from src.utils.logging_utils import setup_logger
+from src.etl.utils.logging_utils import setup_logger
 from typing import Dict
 
 

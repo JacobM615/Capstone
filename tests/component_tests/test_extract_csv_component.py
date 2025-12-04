@@ -3,8 +3,8 @@ import pytest
 
 # timeit if I want to do performance testing later
 
-from src.extract.extract import CSV_FILES
-from src.extract.extract_csv import extract_csv
+from src.etl.extract.extract import CSV_FILES
+from src.etl.extract.extract_csv import extract_csv
 
 
 @pytest.fixture
