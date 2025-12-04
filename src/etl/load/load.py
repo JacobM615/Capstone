@@ -8,7 +8,7 @@ logger = setup_logger("load_data", "load_data.log")
 
 def load_data(
     transformed_data: tuple[
-        pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame
+        pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame
     ],
 ) -> None:
     for df in transformed_data:

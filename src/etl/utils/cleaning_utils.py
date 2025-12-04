@@ -2,6 +2,7 @@ import pandas as pd
 
 
 def remove_nulls(df: pd.DataFrame) -> pd.DataFrame:
+    df = df.replace(" ", None)
     return df.dropna()
 
 

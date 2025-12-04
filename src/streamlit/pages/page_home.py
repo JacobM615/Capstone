@@ -1,6 +1,10 @@
 import streamlit as st
 
-st.title("Home Page")  # Or st.header()??
+st.markdown(
+    "<h1 style='text-align: center;'>Home Page</h1>",
+    unsafe_allow_html=True,
+)
+
 
 st.subheader("Please you the sidebar navigation to explore the dataset!")
 

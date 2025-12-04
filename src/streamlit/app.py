@@ -19,12 +19,12 @@ st.markdown(
 )
 
 home_page = st.Page("pages/page_home.py", title="Homepage")
-checkin_checkout = st.Page(
-    "pages/checkin_checkout.py", title="Checkin-checkout history"
-)
-subscriptions = st.Page("pages/subscriptions.py", title="Subscriptions")
+checkin_checkout = st.Page("pages/page_checkin_checkout.py", title="Workouts")
+subscriptions = st.Page("pages/page_subscriptions.py", title="Subscriptions")
+gyms = st.Page("pages/page_gyms.py", title="Gyms")
+testing = st.Page("pages/testing_page.py", title="TESTING")
 
 navigation = st.navigation(
-    [home_page, checkin_checkout, subscriptions], expanded=True
+    [home_page, checkin_checkout, subscriptions, gyms, testing], expanded=True
 )
 navigation.run()

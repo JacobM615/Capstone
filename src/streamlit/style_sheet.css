@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 /* body {
 
@@ -11,10 +11,9 @@ p {
 
 } */
 
-body div.stApp h1 {
-    font-family: 'Press Start 2P', sans-serif;
-    text-shadow: -5px 0 #3774b5, 0 5px #3774b5, 5px 0 #3774b5, 0 -5px #3774b5;
-    color: #ffcd0b;
+body div.stApp {
+    font-family: "Inter", sans-serif;
+    color: #ffffff;
 }
 
 div.stButton > button {
