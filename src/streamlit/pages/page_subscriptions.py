@@ -46,7 +46,7 @@ fig_sub_plans_counts = px.bar(
 )
 
 fig_sub_plans_counts.update_yaxes(
-    range=[sub_plans_counts.min() - 50, sub_plans_counts.max() + 50]
+    range=[sub_plans_counts.min() - 20, sub_plans_counts.max() + 20]
 )
 fig_sub_plans_counts.update_layout(showlegend=False)
 st.plotly_chart(fig_sub_plans_counts)
