@@ -22,8 +22,6 @@ def load_data(
         relative_output_dir_single = "data/output/single_tables"
         file_names_single = [
             "checkin_checkout.csv",
-            "gyms.csv",
-            "subscriptions.csv",
             "users.csv",
         ]
 
@@ -40,6 +38,7 @@ def load_data(
         relative_output_dir_merged = "data/output/merged"
         file_names_merged = [
             "users__sub_plans.csv",
+            "checkin_checkout__gyms__users.csv",
         ]
 
         i = len(file_names_single)

@@ -17,7 +17,13 @@ def transform_data(
     extracted_data: tuple[
         pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame
     ],
-) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+) -> tuple[
+    pd.DataFrame,
+    pd.DataFrame,
+    pd.DataFrame,
+    pd.DataFrame,
+    pd.DataFrame,
+]:
     try:
         logger.info("Data transforming started!")
 
@@ -62,9 +68,14 @@ def transform_data(
         relative_output_dir_merged = "data/processed/merged"
         file_names_merged = [
             "merged_users__sub_plans.csv",
+            "merged_checkin_checkout__gyms.csv",
+            "merged_checkin_checkout__gyms__users.csv",
         ]
+
         keys = [
             "subscription_plan",
+            "gym_id",
+            "user_id",
         ]
 
         logger.info("Merging users and sub_plans...")
@@ -78,14 +89,35 @@ def transform_data(
         logger.info(f"File saved to {file_location}")
         logger.info("Merged users and sub_plans and saved")
 
+        logger.info("Merging checkin_checkout and gyms...")
+        checkin_checkout__gyms, file_location = merge_two(
+            cleaned_checkin_checkout,
+            cleaned_gyms,
+            keys[1],
+            relative_output_dir_merged,
+            file_names_merged[1],
+        )
+        logger.info(f"File saved to {file_location}")
+        logger.info("Merged checkin_checkout and gyms and saved")
+
+        logger.info("Merging checkin_checkout__gyms and users...")
+        checkin_checkout__gyms__users, file_location = merge_two(
+            checkin_checkout__gyms,
+            cleaned_users,
+            keys[2],
+            relative_output_dir_merged,
+            file_names_merged[2],
+        )
+        logger.info(f"File saved to {file_location}")
+        logger.info("Merged checkin_checkout__gyms and users and saved")
+
         logger.info("Data transformation completed!")
 
         return (
             cleaned_checkin_checkout,
-            cleaned_gyms,
-            cleaned_sub_plans,
             cleaned_users,
             users__sub_plans,
+            checkin_checkout__gyms__users,
         )
     except Exception as e:
         logger.error(f"Data transforming error: {str(e)}")
