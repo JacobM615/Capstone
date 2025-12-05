@@ -8,9 +8,17 @@ logger = setup_logger("load_data", "load_data.log")
 
 def load_data(
     transformed_data: tuple[
-        pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame
+        pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame
     ],
 ) -> None:
+    """
+    Take in transformed data
+    Check if any of the passed dataframes are empty
+    Setup loading variables for single tables (output location and output names)
+    Save single tables
+    Setup loading variables for merged tables (output location and output names)
+    Save merged tables
+    """
     for df in transformed_data:
         if df is None or df.empty:
             logger.warning("transformed_data is empty -> no data to load")

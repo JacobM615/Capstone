@@ -16,6 +16,10 @@ CSV_FILES = [
 def extract_data() -> (
     tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]
 ):
+    """
+    Call extract_csv for each raw file location
+    Return a tuple of raw dataframes
+    """
     try:
         logger.info("Data extraction started!")
 

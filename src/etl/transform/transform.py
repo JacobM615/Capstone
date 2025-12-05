@@ -1,4 +1,5 @@
 import pandas as pd
+import os
 
 from src.etl.transform.clean_checkin_checkout import clean_checkin_checkout
 from src.etl.transform.clean_gyms import clean_gyms
@@ -24,11 +25,20 @@ def transform_data(
     pd.DataFrame,
     pd.DataFrame,
 ]:
+    """
+    Takes in extracted data
+    Setup cleaning variables (output location and output names)
+    Cleans and transforms each table with its own function (the function also saves it)
+    Merge some of the clean tables so that insights can be answered
+    Return transformed output data
+    """
     try:
         logger.info("Data transforming started!")
 
         # Cleaning
-        relative_output_dir_single = "data/processed/single_tables"
+        relative_output_dir_single = os.path.join(
+            "data", "processed", "single_tables"
+        )
         file_names_single = [
             "cleaned_checkin_checkout.csv",
             "cleaned_gyms.csv",
@@ -65,7 +75,9 @@ def transform_data(
         logger.info("Users cleaned, transformed and saved")
 
         # Merging
-        relative_output_dir_merged = "data/processed/merged"
+        relative_output_dir_merged = os.path.join(
+            "data", "processed", "merged"
+        )
         file_names_merged = [
             "merged_users__sub_plans.csv",
             "merged_checkin_checkout__gyms.csv",
