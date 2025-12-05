@@ -25,6 +25,13 @@ def transform_data(
     pd.DataFrame,
     pd.DataFrame,
 ]:
+    """
+    Takes in extracted data
+    Setup cleaning variables (output location and output names)
+    Cleans and transforms each table with its own function (the function also saves it)
+    Merge some of the clean tables so that insights can be answered
+    Return transformed output data
+    """
     try:
         logger.info("Data transforming started!")
 
