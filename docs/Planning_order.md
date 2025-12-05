@@ -85,7 +85,7 @@
 ---
 ---
 
-## Some questions to answer...
+## Possiible questions to answer...
 
 How long is the average gym sessions? (checkout - checkin)
 
@@ -106,6 +106,28 @@ Number of users per subscription? (occurrences per sub)
 Workout types per gym?
 
 Revenue per gym? (gonna need to modify the dataset for this)
+
+---
+
+Chosen questions:
+
+How many workouts are of each type?
+
+How many workouts has each user done?
+
+How long are peoples workout sessions?
+
+How many of each subscription type is there?
+
+Are certain demographics more likely to get a certain subscription?
+
+How much revenue per month is being made by each subscription type?
+
+Does subscription plan affect which type of gym you go to?
+
+What are the top and bottom gym goers (by number of sessions)?
+
+What does the geographical distribution of users look like?
 
 ---
 ---

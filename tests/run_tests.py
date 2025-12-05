@@ -26,7 +26,7 @@ def main():
             cov_command = (
                 f"ENV=test coverage run --source={cov_sources} "
                 f"--omit=*/__init__.py -m pytest --verbose {test_dir} "
-                "&& coverage report -m "
+                # "&& coverage report -m "
                 "&& coverage report --fail-under=90"
             )
         else:
