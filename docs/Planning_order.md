@@ -1,6 +1,6 @@
 # Planning
 
-## The stuff that needs doing roughly in order
+## Brain storm of what needs doing (roughly in order)
 
 1. Data
 
@@ -8,7 +8,7 @@
 
     - Create short list
     
-    - Choose oen dataset
+    - Choose one dataset
     
     - Double check it meets requirements
 
@@ -66,11 +66,11 @@
 
 5. App
 
-    - Take in the csv or (better) the load df
+    - Take in the csv or (better) load the df
 
     - Make analysis plots (must be a few and some interactive ones)
 
-    - Make pretty app (CSS, pages)
+    - Make app pretty (CSS, pages)
 
 6. Plan future stuff (aws etc), next steps
 
