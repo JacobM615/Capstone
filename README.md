@@ -1,10 +1,11 @@
 # Capstone
 ---
----
 
-# Introduction
+## Introduction
 
-At the end of the 12 weeks of Digital Futures academy, Data Engineering course, I completed my Capstone project. The Capstone project is an Extract Transform Load (ETL) pipeline written in Python that takes a set of tables from the input file through the pipeline and displays the data in a Streamlit local website application. The data was originally sourced from kaggle, it was synthetic data designed to mimic a gym company's data and consisted of tables of users, gyms, checkin & checkout data and subscription plans. I did adapt/modify it slightly before using it to allow me to demonstrate more of the skills and knowledge I gained form the course. The project was done in a week and included dataset choice, planning, writing code for the ETL pipeline and tests, reflection and a 10 minute presentation showing off my project to the rest of the cohort.
+At the end of the 12 weeks of Digital Futures academy, Data Engineering course, I completed my Capstone project. The Capstone project is an Extract Transform Load (ETL) pipeline written in Python that takes a set of tables from the input file through the pipeline and displays the data in a Streamlit local website application. The data was originally sourced from Kaggle, it was synthetic data designed to mimic a gym company's data and consisted of tables of users, gyms, checkin & checkout data and subscription plans. I did adapt/modify it slightly before using it to allow me to demonstrate more of the skills and knowledge I gained form the course. The project was done in a week and included dataset choice, planning, writing code for the ETL pipeline and tests, reflection and a 10 minute presentation showing off my project to the rest of the cohort.
+
+Reflction and planning documents can be found in the "docs" folder.
 
 ## Dataset
 
@@ -15,211 +16,43 @@ I chose my dataset because my main hobby is going to the gym, this data set met 
 ---
 ---
 
-## Possible questions to answer...
+(the following is inputted and used in the terminal)
 
-How long is the average gym sessions? (checkout - checkin)
+## Setup
 
-What is the average calories burned?
+1. Create a python virtual environment
 
-Most and least popular workout type? (count workout types)
+    - Windowns: python -m venv .venv
 
-Most and least popular gym? (count number of occurrences)
+    - Mac: python3 -m venv .venv
 
-What do the subscription type demographics look like? (ages, gender by sub plan)
+2. Activate the virtual environment
 
-What does the demographic of all the gyms look like? (age, gender by gym by gym)
+    - Windowns: source .venv/Scripts/activate
 
-Revenue by subscription type? (occurrences x price per plan)
+    - Mac: source .venv/bin/activate
 
-Number of users per subscription? (occurrences per sub)
+3. Install packages
 
-Workout types per gym?
+    - Both: pip install -r requirements.txt
 
-Revenue per gym? (gonna need to modify the dataset for this)
+## Project running
 
----
+1. Run the ETL pipeline
 
-Chosen questions:
+    - run_etl
 
-- How many workouts are of each type?
+2. Run the tests
 
-- How many workouts has each user done?
+    - run_tests all
 
-- How long are peoples workout sessions?
+3. Run the Streamlit app. The app uses the output files from the pipeline so to run the app the data/output folders must be populated, if they are not run the pipeline using "run_etl".
 
-- How many of each subscription type is there?
+    - cd src
 
-- Are certain demographics more likely to get a certain subscription?
+    - cd streamlit
 
-- How much revenue per month is being made by each subscription type?
+    - streamlit run app.py
 
-- Does subscription plan affect which type of gym you go to?
+    - To leave the streamlit app close the tab and press ctrl + C in the terminal.
 
-- What are the top and bottom gym goers (by number of sessions)?
-
-- What does the geographical distribution of users look like?
-
----
----
-
-## EPICS
-
-### 1. (Extract)
-
-```text
-As a Data Engineer,
-I want to be able to access all of the raw tables,
-So that it can be transformed/processed ready for analysis and Streamlit integration.
-```
-
-<details> <summary> Expand </summary>
-
----
-
-User Story 1.1
-
-    As a Data Engineer,
-    I want to be able to access the data from the CSV files,
-    So that it can be transformed.
-
-    AC:
-    - The data is extracted from the CSVs to a df
-    - No errors
-    - Data integrity maintained
-    - Logger works (successful and otherwise)
-    - Good test coverage (all code that isn't just calling other code)
-
-</details>
-
-### 2. (Transform)
-
-```text
-As a Data Engineer,
-I want to clean, standardised, enriched and aggregated data if needed,
-So that it can be analysed and used to draw useful insights from.
-```
-
-<details> <summary> Expand </summary>
-
----
-
-User Story 2.1
-
-    As a Data Engineer,
-    I want to be able to access clean, standardised data,
-    So that it can be further transformed.
-
-    AC:
-    - Nulls are handled gracefully and appropriately
-    - The data is standardised on a column by column basis (consistent formatting etc.)
-    - No errors
-    - Data integrity maintained
-    - Logger works (successful and otherwise)
-    - Good test coverage (all code that isn't just calling other code)
-
-User Story 2.2
-
-    As a Data Engineer,
-    I want to be able to access combined, enriched and aggregated data,
-    So that it can be analysed.
-
-    AC:
-    - The dfs that need to be should be merged
-    - The appropriate enrichments are performed
-    - The appropriate aggregates are made
-    - No errors
-    - Data integrity maintained
-    - Logger works (successful and otherwise)
-    - Good test coverage (all code that isn't just calling other code)
-    
-</details>
-
-### 3. (Load)
-
-```text
-As a Data Engineer,
-I want to store the data to used,
-So that it can be analysed and used to draw useful insights from.
-```
-
-<details> <summary> Expand </summary>
-
----
-
-User Story 3.1
-
-    As a Data Engineer,
-    I want to be able to save the transformed dfs as CSVs,
-    So that it can be analysed and accessed by Streamlit.
-
-    AC:
-    - It saves properly in the correct file format
-    - Data integrity is maintained
-    - It is saved in the correct/specified place in the file system
-    - No errors
-    - Data integrity maintained
-    - Logger works (successful and otherwise)
-    - Good test coverage (all code that isn't just calling other code)
-
-</details>
-
-### 4. (Visualise)
-
-```text
-As a Data Engineer/Analyst,
-I want to present the data and findings in Streamlit,
-So that it can be presented.
-```
-
-<details> <summary> Expand </summary>
-
----
-
-User Story 4.1
-
-    As a Data Engineer/Analyst,
-    I want to be able to provide insights into the data,
-    So that the initial questions can be answered.
-
-    AC:
-    - It includes multiple interactive graphs of different types
-    - No errors
-
-User Story 4.2
-
-    As a Data Engineer/Analyst,
-    I want to be able to present a visually appealing Streamlit site,
-    So that the insights are conveyed better and the audiences attention is held.
-
-    AC:
-    - A good website structure
-    - A consistent format and styling is used
-    - Interesting graphs presented
-
-</details>
-
----
----
-
-## Challenges and takeaway
-
-Challenges: 
-- Synthetic data can be too clean in some ways and sometimes be illogical
-- Coming up with tests can be hard
-- Streamlit can be awkward to work with at times likely due to my limited knowledge
-- Coming up with ideas and lines of inquiry
-
-Takeaways:
-- Synthetic data is only as good as your prompts
-- Documentation is a lot easier to understand with examples alongside
-- Notebooks are very useful to test changes away from the main code
-
----
----
-
-## Future dev
-
-- Answer these question: What are the top and bottom gym goers (by number of sessions)? What does the geographical distribution of users look like?
-- Make the users vs gym sessions graph interactive (Click on point -> display that users information)
-- Save the data to a database instead of to csv files, for example using AWS services (S3 for the raw data, Glue to implement transformations, RDS for the related tables, EC2 to run the app, (if actual data was used) IAM roles could be used to keep confidentiality)
-- The commands could be setup to run the etl and then app with one command.
