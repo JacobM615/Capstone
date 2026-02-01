@@ -1,5 +1,10 @@
 # Capstone
-Digital Futures capstone project
+---
+---
+
+# Introduction
+
+At the end of the 12 weeks of Digital Futures academy, Data Engineering course, I completed my Capstone project. The Capstone project is an Extract Transform Load (ETL) pipeline written in Python that takes a set of tables from the input file through the pipeline and displays the data in a Streamlit local website application. The data was originally sourced from kaggle, it was synthetic data designed to mimic a gym company's data and consisted of tables of users, gyms, checkin & checkout data and subscription plans. I did adapt/modify it slightly before using it to allow me to demonstrate more of the skills and knowledge I gained form the course. The project was done in a week and included dataset choice, planning, writing code for the ETL pipeline and tests, reflection and a 10 minute presentation showing off my project to the rest of the cohort.
 
 ## Dataset
 
